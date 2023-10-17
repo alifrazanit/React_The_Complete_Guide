@@ -1,7 +1,6 @@
 import React from "react";
 import "./UserList.css";
 export const UserList = (props) => {
-  
 
   return (
     <React.Fragment>
@@ -11,6 +10,7 @@ export const UserList = (props) => {
             <table className="table">
               <thead>
                 <tr>
+                  <th>Actions</th>
                   <th>Name</th>
                   <th>Birth Date</th>
                   <th>Gender</th>
@@ -20,6 +20,12 @@ export const UserList = (props) => {
                 {props.users &&
                   props.users.map((e) => (
                     <tr key={e.id}>
+                      <td>
+                        <i
+                          className="btn-update fa-regular fa-pen-to-square"
+                        ></i>
+                        | <i className="btn-delete fa-solid fa-trash"></i>
+                      </td>
                       <td>{e.name}</td>
                       <td>{new Date(e.birthDate).toLocaleDateString()}</td>
                       <td>{e.gender}</td>

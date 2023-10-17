@@ -1,33 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UserForm.css";
+
 export const UserForm = (props) => {
+  const [nameVal, setName] = useState("");
+  const [birthDateVal, setBirthDate] = useState("");
+  const [genderVal, setGender] = useState("");
+
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const onChangeBirthDate = (e) => {
+    setBirthDate(e.target.value);
+  };
+
+  const onChangeGender = (e) => {
+    setGender(e.target.value);
+  };
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    if (!nameVal || !birthDateVal || !genderVal) {
+      alert("Form is not valid, please input correct data");
+    } else {
+      const payload = {
+        id: Math.random(),
+        name: nameVal,
+        birthDate: birthDateVal,
+        gender: genderVal,
+      };
+      setName("");
+      setBirthDate("");
+      setGender("");
+      props.onSubmitFormEvent(payload);
+    }
+  };
+
   return (
     <React.Fragment>
-      <div className="row">
-        <div className="col">
-          <div className="form-user">
-            <h1>Form User</h1>
-            <form>
-              <label for="fname">Name</label>
-              <input type="text" id="fname" placeholder="Your name.." />
-              <label for="fbirthdate">Birth Date</label>
-              <input type="date" id="fbirthdate" />
-              <label for="fgender">Gender</label>
-              <select id="gender" name="gender">
+      <form onSubmit={onSubmitForm}>
+        <div className="row">
+          <div className="col">
+            <div className="form-user">
+              <h1>Form User</h1>
+              <label htmlFor="fname">Name</label>
+              <input
+                type="text"
+                id="fname"
+                placeholder="Your name.."
+                onChange={onChangeName}
+                value={nameVal}
+              />
+              <label htmlFor="fbirthdate">Birth Date</label>
+              <input
+                type="date"
+                id="fbirthdate"
+                onChange={onChangeBirthDate}
+                value={birthDateVal}
+              />
+              <label htmlFor="fgender">Gender</label>
+              <select
+                id="gender"
+                name="gender"
+                onChange={onChangeGender}
+                value={genderVal}
+              >
+                <option value="">--PLEASE SELECT--</option>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
               </select>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <div className="form-actions">
-            <button type="button" class="btn btn-save">Save</button>
+        <div className="row">
+          <div className="col">
+            <div className="form-actions">
+              <button type="submit" className="btn btn-save">
+                Save
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </React.Fragment>
   );
 };

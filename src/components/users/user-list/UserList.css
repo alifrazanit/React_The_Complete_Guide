@@ -15,3 +15,12 @@
   background-color: #f2f2f2;
 }
 
+.btn-update{
+  cursor: pointer;
+  color: #FFC312;
+}
+
+.btn-delete{
+  cursor: pointer;
+  color: #EA2027;
+}
