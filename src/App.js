@@ -8,25 +8,26 @@ function App() {
       id: 1,
       name: 'Alif Razan Saputra',
       birthDate: new Date('1997-10-09'),
-      gander: 'M'
+      gender: 'M'
     },
     {
       id: 2,
       name: 'Ai Nurrohmat',
       birthDate: new Date('1993-09-01'),
-      gander: 'F'
+      gender: 'F'
     },
     {
       id: 3,
       name: 'Rizky Ramadhan Saputra',
       birthDate: new Date('2007-08-23'),
-      gander: 'M'
+      gender: 'M'
     }
   ]
 
 
   return (
     <React.Fragment>
+      <UserForm />
       <UserList users={userListData}/>
     </React.Fragment>
 
