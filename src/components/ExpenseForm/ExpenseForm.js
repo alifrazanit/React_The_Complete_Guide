@@ -1,19 +1,36 @@
 import './ExpenseForm.css';
 import { useState } from 'react';
 export const ExpenseForm = props => {
-    const [title, setTitle] = useState();
-    const [amount, setAmount] = useState();
-    const [dateExpense, setDate] = useState();
+    // const [title, setTitle] = useState();
+    // const [amount, setAmount] = useState();
+    // const [dateExpense, setDate] = useState();
 
+    const [userInput, setUserInput] = useState({
+        title: '',
+        amount:'',
+        dateExpense:'',
+    })
 
     const titleChangeHandler = e => {
-        setTitle(e.target.value)
+        setUserInput({
+            ...userInput,
+            title: e.target.value
+        })
+        // setTitle(e.target.value)
     }
     const amountChangeHandler = e => {
-        setAmount(e.target.value)
+        setUserInput({
+            ...userInput,
+            amount: e.target.value
+        })
+        // setAmount(e.target.value)
     }
     const dateChangeHandler = e => {
-        setDate(e.target.value)
+        setUserInput({
+            ...userInput,
+            dateExpense: e.target.value
+        })
+        // setDate(e.target.value)
     }
 
 
