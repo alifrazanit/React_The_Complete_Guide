@@ -33,9 +33,13 @@ export const ExpenseForm = props => {
         // setDate(e.target.value)
     }
 
+    const onSubmitForm = e => {
+        e.preventDefault();
+        console.log(userInput)
+    }
 
     return(
-        <form>
+        <form onSubmit={onSubmitForm}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
