@@ -24,9 +24,16 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  
+
+  const onSave = data => {
+    console.log('data', data);
+  }
+
+
   return (
     <React.Fragment>
-      <NewExpense />
+      <NewExpense onSave={onSave}/>
       <ExpenseItem
         title={expenses[0].title}
         amount={expenses[0].amount}

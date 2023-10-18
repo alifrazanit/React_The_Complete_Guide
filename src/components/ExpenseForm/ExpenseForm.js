@@ -22,10 +22,10 @@ export const ExpenseForm = (props) => {
       amountVal,
       dateExpense
     };
+    props.onSaveExpense(payload)
     setTitle('');
     setAmount('');
     setDate('');
-    console.log('payload', payload)
   };
 
  
