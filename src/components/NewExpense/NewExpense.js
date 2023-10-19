@@ -1,5 +1,5 @@
 import './NewExpense.css';
-import { ExpenseForm } from '../ExpenseForm/ExpenseForm';
+import { ExpenseForm } from '../Expense/ExpenseForm/ExpenseForm';
 
 export const NewExpense = props => {
     const onSaveExpense = expense => {

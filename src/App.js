@@ -1,7 +1,6 @@
-import { ExpenseFilter } from "./components/ExpenseFilter/ExpenseFilter";
-import { ExpenseItem } from "./components/ExpenseItem/ExpenseItem";
 import { NewExpense } from "./components/NewExpense/NewExpense";
 import React, { useState } from "react";
+import { Expense } from "./components/Expense/Expense";
 
 function App() {
   const expenses = [
@@ -27,29 +26,15 @@ function App() {
   ];
 
   const [listData, setListData] = useState(expenses);
-  const [filteredYear, setFilteredYear] = useState('2020');
 
   const onSave = (data) => {
     console.log("data", data);
   };
 
-  const onChangeFilter = (year) => {
-    setFilteredYear(year);
-  };
-
   return (
     <React.Fragment>
       <NewExpense onSave={onSave} />
-      <ExpenseFilter onChangeFilter={onChangeFilter} selected={filteredYear}/>
-      {listData &&
-        listData.map((ld) => (
-          <ExpenseItem
-            key={ld.key}
-            title={ld.title}
-            amount={ld.amount}
-            date={ld.date}
-          />
-        ))}
+      <Expense items={expenses} />
     </React.Fragment>
   );
 }

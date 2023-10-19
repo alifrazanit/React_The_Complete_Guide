@@ -1,6 +1,6 @@
 import './ExpenseItem.css';
 import { ExpenseDate } from '../ExpenseDate/ExpenseDate';
-import { Cards } from '../Cards/Cards';
+import { Cards } from '../../Cards/Cards';
 
 export const ExpenseItem = props =>{
    
