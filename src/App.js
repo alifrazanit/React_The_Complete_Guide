@@ -8,9 +8,9 @@ function App() {
   const calculateHandler = (ui) => {
     setUserInput(ui);
   };
-
+  const yearlyData = [];
   if (userInput) {
-    const yearlyData = [];
+   
     let currentSavings = +userInput["currentSaving"];
     const yearlyContribution = +userInput["yearlyContribution"];
     const expectedReturn = +userInput["expectedReturn"] / 100;
@@ -26,15 +26,13 @@ function App() {
         yearlyContribution: yearlyContribution,
       });
     }
-
-    console.log("yearlyData", yearlyData);
   }
 
   return (
     <div>
       <HeaderComponent />
       <FormCalculatorComponent onCalculate={calculateHandler} />
-      <TableData />
+      {userInput === null ? <p>No investment</p> : <TableData data={yearlyData} initialInvesment={+userInput['currentSaving']}/>}
     </div>
   );
 }
