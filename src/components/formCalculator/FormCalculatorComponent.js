@@ -21,7 +21,7 @@ export const FormCalculatorComponent = (props) => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    console.log("FormInput", FormInput);
+    props.onCalculate(FormInput)
   };
 
   return (
