@@ -5,6 +5,7 @@ export const UserForm = (props) => {
   const [nameVal, setName] = useState("");
   const [birthDateVal, setBirthDate] = useState("");
   const [genderVal, setGender] = useState("");
+  const [isNotValid, setIsNotValid] = useState(false);
 
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -21,8 +22,10 @@ export const UserForm = (props) => {
   const onSubmitForm = (e) => {
     e.preventDefault();
     if (!nameVal || !birthDateVal || !genderVal) {
-      alert("Form is not valid, please input correct data");
+      setIsNotValid(true);
+      // alert("Form is not valid, please input correct data");
     } else {
+      setIsNotValid(false);
       const payload = {
         id: Math.random(),
         name: nameVal,
@@ -43,32 +46,52 @@ export const UserForm = (props) => {
           <div className="col">
             <div className="form-user">
               <h1>Form User</h1>
-              <label htmlFor="fname">Name</label>
-              <input
-                type="text"
-                id="fname"
-                placeholder="Your name.."
-                onChange={onChangeName}
-                value={nameVal}
-              />
-              <label htmlFor="fbirthdate">Birth Date</label>
-              <input
-                type="date"
-                id="fbirthdate"
-                onChange={onChangeBirthDate}
-                value={birthDateVal}
-              />
-              <label htmlFor="fgender">Gender</label>
-              <select
-                id="gender"
-                name="gender"
-                onChange={onChangeGender}
-                value={genderVal}
+              <div
+                className={`form-control ${
+                  isNotValid && nameVal.trim().length === 0 ? "invalid" : ""
+                }`}
               >
-                <option value="">--PLEASE SELECT--</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-              </select>
+                <label htmlFor="fname">Name</label>
+                <input
+                  type="text"
+                  id="fname"
+                  placeholder="Your name.."
+                  onChange={onChangeName}
+                  value={nameVal}
+                />
+              </div>
+
+              <div
+                className={`form-control ${
+                  isNotValid && nameVal.trim().length === 0 ? "invalid" : ""
+                }`}
+              >
+                <label htmlFor="fbirthdate">Birth Date</label>
+                <input
+                  type="date"
+                  id="fbirthdate"
+                  onChange={onChangeBirthDate}
+                  value={birthDateVal}
+                />
+              </div>
+
+              <div
+                className={`form-control ${
+                  isNotValid && nameVal.trim().length === 0 ? "invalid" : ""
+                }`}
+              >
+                <label htmlFor="fgender">Gender</label>
+                <select
+                  id="gender"
+                  name="gender"
+                  onChange={onChangeGender}
+                  value={genderVal}
+                >
+                  <option value="">--PLEASE SELECT--</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>

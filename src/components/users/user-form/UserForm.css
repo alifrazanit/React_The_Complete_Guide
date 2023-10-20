@@ -40,6 +40,18 @@ input[type="submit"]:hover {
     justify-content: center;
 }
 
+.form-control.invalid label{
+  color: red;
+}
+
+.form-control.invalid input[type="text"],
+.form-control.invalid input[type="date"],
+.form-control.invalid select{
+  background-color: red;
+  color: white;
+}
+
+
 @media (max-width: 450px) {
   .form-user {
     width: 100%;
