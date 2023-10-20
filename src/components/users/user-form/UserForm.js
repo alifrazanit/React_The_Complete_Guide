@@ -1,41 +1,40 @@
 import React, { useState } from "react";
 import "./UserForm.css";
 
+const INIT_VAL = {
+  nameVal: '',
+  birthDateVal: null,
+  genderVal: '',
+};
 export const UserForm = (props) => {
-  const [nameVal, setName] = useState("");
-  const [birthDateVal, setBirthDate] = useState("");
-  const [genderVal, setGender] = useState("");
-  const [isNotValid, setIsNotValid] = useState(false);
+  const [formData, setFormData] = useState(INIT_VAL);
+  const [isValid, setIsValid] = useState(true);
 
-  const onChangeName = (e) => {
-    setName(e.target.value);
-  };
-
-  const onChangeBirthDate = (e) => {
-    setBirthDate(e.target.value);
-  };
-
-  const onChangeGender = (e) => {
-    setGender(e.target.value);
+  const onChangeHandler = (fields, value) => {
+    setFormData((prev) => {
+      return { ...prev, [fields]: value };
+    });
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    if (!nameVal || !birthDateVal || !genderVal) {
-      setIsNotValid(true);
-      // alert("Form is not valid, please input correct data");
+    if (validateForm()) {
+      props.onSubmitFormEvent(formData);
+      setFormData(INIT_VAL);
     } else {
-      setIsNotValid(false);
-      const payload = {
-        id: Math.random(),
-        name: nameVal,
-        birthDate: birthDateVal,
-        gender: genderVal,
-      };
-      setName("");
-      setBirthDate("");
-      setGender("");
-      props.onSubmitFormEvent(payload);
+      alert('invalid form input')
+    }
+  };
+
+  const validateForm = () => {
+    if (
+      String(formData.nameVal).trim().length < 1 ||
+      String(formData.genderVal).trim().length < 1 ||
+      formData.birthDateVal === null
+    ) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
     }
   };
 
@@ -46,46 +45,37 @@ export const UserForm = (props) => {
           <div className="col">
             <div className="form-user">
               <h1>Form User</h1>
-              <div
-                className={`form-control ${
-                  isNotValid && nameVal.trim().length === 0 ? "invalid" : ""
-                }`}
-              >
+              <div className={`form-control ${!isValid && formData.nameVal.trim().length === 0 ? "invalid" : ""}`}>
                 <label htmlFor="fname">Name</label>
                 <input
                   type="text"
                   id="fname"
                   placeholder="Your name.."
-                  onChange={onChangeName}
-                  value={nameVal}
+                  onChange={(e) => {onChangeHandler("nameVal", e.target.value);}}
+                  value={formData["nameVal"]}
                 />
               </div>
-
-              <div
-                className={`form-control ${
-                  isNotValid && nameVal.trim().length === 0 ? "invalid" : ""
-                }`}
-              >
+              <div className={`form-control ${!isValid && formData.birthDateVal === null ? "invalid" : ""}`}>
                 <label htmlFor="fbirthdate">Birth Date</label>
                 <input
                   type="date"
                   id="fbirthdate"
-                  onChange={onChangeBirthDate}
-                  value={birthDateVal}
+                  onChange={(e) => {
+                    onChangeHandler("birthDateVal", e.target.value);
+                  }}
+                  value={formData["birthDateVal"]}
                 />
               </div>
 
-              <div
-                className={`form-control ${
-                  isNotValid && nameVal.trim().length === 0 ? "invalid" : ""
-                }`}
-              >
+              <div className={`form-control ${!isValid && formData.genderVal.trim().length === 0 ? "invalid" : ""}`}>
                 <label htmlFor="fgender">Gender</label>
                 <select
                   id="gender"
                   name="gender"
-                  onChange={onChangeGender}
-                  value={genderVal}
+                  onChange={(e) => {
+                    onChangeHandler("genderVal", e.target.value);
+                  }}
+                  value={formData["genderVal"]}
                 >
                   <option value="">--PLEASE SELECT--</option>
                   <option value="M">Male</option>

@@ -21,9 +21,7 @@ export const UserList = (props) => {
                   props.users.map((e) => (
                     <tr key={e.id}>
                       <td>
-                        <i
-                          className="btn-update fa-regular fa-pen-to-square"
-                        ></i>
+                        <i className="btn-update fa-regular fa-pen-to-square"></i>
                         | <i className="btn-delete fa-solid fa-trash"></i>
                       </td>
                       <td>{e.name}</td>
