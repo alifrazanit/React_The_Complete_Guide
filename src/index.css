@@ -14,14 +14,7 @@ code {
     monospace;
 }
 
-.row{
-  display: block;
-  width: 100%;
-}
-.col{
-  display: block;
-  padding: 1rem;
-}
+
 .btn {
   padding: 15px 25px;
   font-size: 24px;
