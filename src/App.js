@@ -1,12 +1,25 @@
-import React, { useContext } from "react";
-import { useEffect } from "react";
+import React, { useState } from "react";
+import { Header } from "./components/Header/Header";
+import { Footer } from './components/Footer/Footer';
+
+import { LoginPage } from './pages/Login/LoginPage';
+import { MenuPage } from './pages/Menu/MenuPage';
+import { OrderPage } from './pages/Order/OrderPage';
 
 
 function App() {
+  const [switchPage, setSwitchPage] = useState('LoginPage');
+  const onSwitchPageHandler = e => {
+    setSwitchPage(e)
+  }
   return (
-   <>
-   <h1>Hello</h1>
-   </>
+    <>
+      <Header />
+      {switchPage && switchPage === 'MenuPage' && (<MenuPage />)}
+      {switchPage && switchPage === 'OrderPage' && (<OrderPage />)}
+      {switchPage && switchPage === 'LoginPage' && (<LoginPage />)}
+      <Footer onSwitchPage={onSwitchPageHandler}/>
+    </>
   );
 }
 
