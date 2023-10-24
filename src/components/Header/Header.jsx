@@ -1,4 +1,5 @@
 import ReactImg from "../../assets/react-core-concepts.png";
+import './Header.css';
 export const Header = (props) => {
   const reactDescriptions = ["Fundamental", "Crucial", "Core"];
   const randomNumber = reactDescriptions[genRandomInt(2)];
