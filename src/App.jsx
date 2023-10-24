@@ -3,8 +3,9 @@ import propsImg from "./assets/config.png";
 import jsxImg from "./assets/jsx-ui.png";
 import stateImg from "./assets/state-mgmt.png";
 
-import { Header} from './components/Header/Header';
-import { CoreConcept } from './components/CoreConcept/CoreConcept';
+import { Header } from "./components/Header/Header";
+import { CoreConcept } from "./components/CoreConcept/CoreConcept";
+import { TabButton } from "./components/TabButton/TabButton";
 
 export const CORE_CONCEPTS = [
   {
@@ -42,12 +43,13 @@ function App() {
           <h2>Core Concept</h2>
           <ul>
             {CORE_CONCEPTS &&
-              CORE_CONCEPTS.map((data) => (
-                  <CoreConcept
-                  {...data}
-                />
-              ))}
+              CORE_CONCEPTS.map((data) => <CoreConcept {...data} />)}
           </ul>
+        </section>
+        <section id="examples">
+          <menu>
+              <TabButton>Components</TabButton>
+          </menu>
         </section>
         <h2>Time to get started!</h2>
       </main>
