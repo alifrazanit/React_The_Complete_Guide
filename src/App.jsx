@@ -1,10 +1,10 @@
-import ReactImg from "./assets/react-core-concepts.png";
 import componentsImg from "./assets/components.png";
 import propsImg from "./assets/config.png";
 import jsxImg from "./assets/jsx-ui.png";
 import stateImg from "./assets/state-mgmt.png";
 
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
+import { Header} from './components/Header/Header';
+import { CoreConcept } from './components/CoreConcept/CoreConcept';
 
 export const CORE_CONCEPTS = [
   {
@@ -33,34 +33,6 @@ export const CORE_CONCEPTS = [
   },
 ];
 
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-const Header = (props) => {
-  const randomNumber = reactDescriptions[genRandomInt(2)];
-  return (
-    <header>
-      <img src={ReactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {randomNumber} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-};
-
-const CoreConcept = ({image, title, description}) => {
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-};
-
 function App() {
   return (
     <div>
@@ -71,11 +43,6 @@ function App() {
           <ul>
             {CORE_CONCEPTS &&
               CORE_CONCEPTS.map((data) => (
-                // <CoreConcept
-                //   title={data.title}
-                //   description={data.description}
-                //   image={data.image}
-                // />
                   <CoreConcept
                   {...data}
                 />
