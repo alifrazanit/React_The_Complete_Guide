@@ -1,7 +1,7 @@
 export const TabButton = props => {
     return (
         <li>
-            <button>{props.children}</button>
+            <button className={props.isSelected} onClick={props.onClick}>{props.children}</button>
         </li>
     )
 }
