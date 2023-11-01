@@ -4,10 +4,8 @@ import jsxImg from "./assets/jsx-ui.png";
 import stateImg from "./assets/state-mgmt.png";
 
 import { Header } from "./components/Header/Header";
-import { CoreConcept } from "./components/CoreConcept/CoreConcept";
-import { TabButton } from "./components/TabButton/TabButton";
-import { useState } from "react";
-import { data } from "./mocks/data";
+import { CoreConcepts } from "./components/CoreConcepts/CoreConcepts";
+import { Examples } from "./components/Examples/Example";
 
 export const CORE_CONCEPTS = [
   {
@@ -37,44 +35,12 @@ export const CORE_CONCEPTS = [
 ];
 
 function App() {
-  const [topik, setTopik] = useState(null);
-  const onClickHandler = (e) => {
-    setTopik(e);
-  };
-
-  let topikContent = <p>Please select the topik</p>;
-  if(topik){
-    topikContent = (<div id="tab-content">
-    <h3>{data[topik].title}</h3>
-    <p>{data[topik].description}</p>
-    <pre>
-      <code>{data[topik].code}</code>
-    </pre>
-  </div>)
-  }
-
   return (
     <div>
       <Header />
       <main>
-        <section id="core-concepts">
-          <h2>Core Concept</h2>
-          <ul>
-            {CORE_CONCEPTS &&
-              CORE_CONCEPTS.map((data) => <CoreConcept {...data} />)}
-          </ul>
-        </section>
-        <section id="examples">
-          <menu>
-            <TabButton isSelected={topik === "components"} onClick={() => onClickHandler("components")}>
-              Components
-            </TabButton>
-            <TabButton isSelected={topik === "jsx"} onClick={() => onClickHandler("jsx")}>JSX</TabButton>
-            <TabButton isSelected={topik === "props"} onClick={() => onClickHandler("props")}>Props</TabButton>
-            <TabButton isSelected={topik === "state"} onClick={() => onClickHandler("state")}>State</TabButton>
-          </menu>
-          {topikContent}
-        </section>
+        <CoreConcepts coreConcept={CORE_CONCEPTS}/>
+        <Examples/>
       </main>
     </div>
   );
