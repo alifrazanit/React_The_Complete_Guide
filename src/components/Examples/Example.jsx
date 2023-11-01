@@ -1,6 +1,7 @@
 import { TabButton } from "../../components/TabButton/TabButton";
 import { useState } from "react";
 import { data } from '../../mocks/data';
+import { Section } from '../Section/Section';
 
 
 export const Examples = (props) => {
@@ -23,7 +24,7 @@ export const Examples = (props) => {
   }
 
   return (
-    <section id="examples">
+    <Section title="Examples" id="examples">
       <menu>
         <TabButton
           isSelected={topik === "components"}
@@ -51,6 +52,6 @@ export const Examples = (props) => {
         </TabButton>
       </menu>
       {topikContent}
-    </section>
+    </Section>
   );
 };
