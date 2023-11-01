@@ -1,8 +1,8 @@
 import { TabButton } from "../../components/TabButton/TabButton";
 import { useState } from "react";
-import { data } from '../../mocks/data';
-import { Section } from '../Section/Section';
-
+import { data } from "../../mocks/data";
+import { Section } from "../Section/Section";
+import { Tabs } from "../Tabs/Tabs";
 
 export const Examples = (props) => {
   const [topik, setTopik] = useState(null);
@@ -25,33 +25,38 @@ export const Examples = (props) => {
 
   return (
     <Section title="Examples" id="examples">
-      <menu>
-        <TabButton
-          isSelected={topik === "components"}
-          onClick={() => onClickHandler("components")}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={topik === "jsx"}
-          onClick={() => onClickHandler("jsx")}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={topik === "props"}
-          onClick={() => onClickHandler("props")}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={topik === "state"}
-          onClick={() => onClickHandler("state")}
-        >
-          State
-        </TabButton>
-      </menu>
-      {topikContent}
+      <Tabs
+        buttons={
+          <>
+            <TabButton
+              isSelected={topik === "components"}
+              onClick={() => onClickHandler("components")}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={topik === "jsx"}
+              onClick={() => onClickHandler("jsx")}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={topik === "props"}
+              onClick={() => onClickHandler("props")}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={topik === "state"}
+              onClick={() => onClickHandler("state")}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      >
+        {topikContent}
+      </Tabs>
     </Section>
   );
 };
