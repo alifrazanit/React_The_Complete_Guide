@@ -26,6 +26,7 @@ export const Examples = (props) => {
   return (
     <Section title="Examples" id="examples">
       <Tabs
+      ButtonContainer="menu"
         buttons={
           <>
             <TabButton
