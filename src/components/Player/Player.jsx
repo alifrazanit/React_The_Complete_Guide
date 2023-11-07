@@ -4,7 +4,7 @@ export const Player = ({ name, sysmbol }) => {
   let playerName = <span className="player-name">{name}</span>;
 
   const onEdit = (e) => {
-    setIsEdit(!isEdit);
+    setIsEdit((editing) => !editing);
   };
 
   if (isEdit) {
