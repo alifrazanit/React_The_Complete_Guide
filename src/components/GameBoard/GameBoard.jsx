@@ -4,17 +4,17 @@ const initialGameBoard = [
     [null,null,null],
     [null,null,null]
 ]
-export const GameBoard = ({onSelectedSquare, activeSymbols}) => {
-    const [gameBoard, setGameBoard] = useState(initialGameBoard);
+export const GameBoard = ({onSelectedSquare}) => {
+    // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-    const handleSelectedSquer = (rowIndex, colIndex) => {
-        setGameBoard((prevGameBoard) => {
-            const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
-            updatedBoard[rowIndex][colIndex] = activeSymbols;
-            return updatedBoard;
-        });
-        onSelectedSquare();
-    }
+    // const handleSelectedSquer = (rowIndex, colIndex) => {
+    //     setGameBoard((prevGameBoard) => {
+    //         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
+    //         updatedBoard[rowIndex][colIndex] = activeSymbols;
+    //         return updatedBoard;
+    //     });
+    //     onSelectedSquare();
+    // }
 
     return (
         <ol id="game-board">
@@ -22,7 +22,7 @@ export const GameBoard = ({onSelectedSquare, activeSymbols}) => {
                 <ol>
                     {row.map((playerSymbol, colIndex) => (
                         <li key={colIndex}>
-                            <button onClick={() => handleSelectedSquer(rowIndex, colIndex)}>{playerSymbol}</button>
+                            <button onClick={onSelectedSquare}>{playerSymbol}</button>
                         </li>
                     ))}
                 </ol>
