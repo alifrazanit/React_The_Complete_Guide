@@ -4,15 +4,16 @@ const initialGameBoard = [
     [null,null,null],
     [null,null,null]
 ]
-export const GameBoard = props => {
+export const GameBoard = ({onSelectedSquare, activeSymbols}) => {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     const handleSelectedSquer = (rowIndex, colIndex) => {
         setGameBoard((prevGameBoard) => {
             const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
-            updatedBoard[rowIndex][colIndex] = 'X';
+            updatedBoard[rowIndex][colIndex] = activeSymbols;
             return updatedBoard;
         });
+        onSelectedSquare();
     }
 
     return (
