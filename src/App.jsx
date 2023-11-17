@@ -32,7 +32,7 @@ function App() {
           <Player name="Player 1" sysmbol="X" isActive={activePlayer === "X"} />
           <Player name="Player 2" sysmbol="O" isActive={activePlayer === "O"} />
         </ol>
-        <GameBoard onSelectedSquare={setActivePlayerHandler} activeSymbols={activePlayer}/>
+        <GameBoard onSelectedSquare={setActivePlayerHandler} turns={gameTurn}/>
       </div>
       <Log />
     </main>
