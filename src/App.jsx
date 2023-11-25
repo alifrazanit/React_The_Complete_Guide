@@ -3,6 +3,8 @@ import { GameBoard } from "./components/GameBoard/GameBoard";
 import React, { useState } from "react";
 import { Log } from "./components/Log/Log";
 import { WINNING_COMBINATIONS } from "./winning-combination";
+import { GameOver } from './components/GameOver/GameOver';
+
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -32,11 +34,9 @@ function App() {
   }
 
   for (const combination of WINNING_COMBINATIONS) {
-    console.log('GAMEBOARD', gameBoard)
     const firstSymbols = gameBoard[combination[0].row][combination[0].column];
     const secondSymbols = gameBoard[combination[1].row][combination[1].column];
     const thirdSymbols = gameBoard[combination[2].row][combination[2].column];
-    console.log(firstSymbols, secondSymbols, thirdSymbols)
     if (
       firstSymbols &&
       firstSymbols === secondSymbols &&
@@ -45,6 +45,8 @@ function App() {
       winner = firstSymbols;
     }
   }
+  const hasDraw = gameTurn.length === 9 && !winner;
+
 
   const setActivePlayerHandler = (rowIndex, colIndex) => {
     setGameTurn((prevGameTurn) => {
@@ -65,7 +67,7 @@ function App() {
           <Player name="Player 1" sysmbol="X" isActive={activePlayer === "X"} />
           <Player name="Player 2" sysmbol="O" isActive={activePlayer === "O"} />
         </ol>
-        {winner && <p>You are the winner, {winner}!</p>}
+        {(winner || hasDraw) && <GameOver winner={winner}/>}
         <GameBoard
           onSelectedSquare={setActivePlayerHandler}
           board={gameBoard}
