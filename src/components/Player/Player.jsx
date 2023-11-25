@@ -1,7 +1,7 @@
 import { useState } from "react";
 export const Player = ({ name, sysmbol, isActive }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [playerName, setPlayerName] = useState("");
+  const [playerName, setPlayerName] = useState(name);
 
   let editablePlayerName = <span className="player-name">{playerName}</span>;
 

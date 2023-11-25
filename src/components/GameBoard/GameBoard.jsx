@@ -13,7 +13,7 @@ export const GameBoard = ({onSelectedSquare, turns }) => {
 
         gameBoard[row][col] = player;
     }
-
+        
     // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     // const handleSelectedSquer = (rowIndex, colIndex) => {
@@ -31,7 +31,7 @@ export const GameBoard = ({onSelectedSquare, turns }) => {
                 <ol>
                     {row.map((playerSymbol, colIndex) => (
                         <li key={colIndex}>
-                            <button onClick={() => onSelectedSquare(rowIndex, colIndex)}>{playerSymbol}</button>
+                            <button onClick={() => onSelectedSquare(rowIndex, colIndex)} disabled={playerSymbol ? true: false}>{playerSymbol}</button>
                         </li>
                     ))}
                 </ol>
