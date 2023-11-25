@@ -13,17 +13,7 @@ export const GameBoard = ({onSelectedSquare, turns }) => {
 
         gameBoard[row][col] = player;
     }
-        
-    // const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-    // const handleSelectedSquer = (rowIndex, colIndex) => {
-    //     setGameBoard((prevGameBoard) => {
-    //         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
-    //         updatedBoard[rowIndex][colIndex] = activeSymbols;
-    //         return updatedBoard;
-    //     });
-    //     onSelectedSquare();
-    // }
+    
 
     return (
         <ol id="game-board">
