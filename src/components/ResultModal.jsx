@@ -10,7 +10,6 @@ export const ResultModal = forwardRef(({result, targetTime}, ref) => {
     })
 
 
-
     return (
       <dialog ref={ref} className="result-modal" open>
         <h2>You {result}</h2>

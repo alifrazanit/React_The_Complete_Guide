@@ -18,10 +18,11 @@ export const TimeChallange = ({ title, targetTime }) => {
     clearTimeout(timer.current);
   };
 
-
   return (
     <>
-    {timeExpire && (<ResultModal ref={dialog} targetTime={targetTime} result="lost"/>)}
+      {timeExpire ? (
+        <ResultModal ref={dialog} targetTime={targetTime} result="lost" />
+      ) : null}
       <section className="challenge">
         <h2>{title}</h2>
         {timeExpire && <p>You Lost!</p>}
