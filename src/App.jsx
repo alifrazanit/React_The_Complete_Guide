@@ -1,17 +1,10 @@
-import Player from './components/Player.jsx';
-import { TimeChallange } from './components/TimeChallange.jsx';
+import { SideBar } from "./components/SideBar";
 
 function App() {
   return (
-    <>
-      <Player />
-      <div id="challenges">
-        <TimeChallange title="Easy" targetTime={1} />
-        <TimeChallange title="Not Easy" targetTime={5} />
-        <TimeChallange title="Getting Though" targetTime={10} />
-        <TimeChallange title="Pros Only" targetTime={15} />
-      </div>
-    </>
+    <main className="h-screen my-8">
+      <SideBar />
+    </main>
   );
 }
 
