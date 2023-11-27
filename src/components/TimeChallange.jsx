@@ -2,12 +2,14 @@ import { useState, useRef } from "react";
 import { ResultModal } from "./ResultModal";
 export const TimeChallange = ({ title, targetTime }) => {
   const timer = useRef();
+  const dialog = useRef();
   const [timeExpire, setTimeExpire] = useState(false);
   const [timerStart, setTimerStart] = useState(false);
 
   const onStart = (e) => {
     timer.current = setTimeout(() => {
       setTimeExpire(true);
+      dialog.current.showModal();
     }, targetTime * 1000);
     setTimerStart(true);
   };
@@ -19,7 +21,7 @@ export const TimeChallange = ({ title, targetTime }) => {
 
   return (
     <>
-    {targetTime && <ResultModal targetTime={targetTime} result="lost"/>}
+    {timeExpire && (<ResultModal ref={dialog} targetTime={targetTime} result="lost"/>)}
       <section className="challenge">
         <h2>{title}</h2>
         {timeExpire && <p>You Lost!</p>}
