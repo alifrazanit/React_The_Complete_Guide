@@ -9,7 +9,7 @@ export const TimeChallange = ({ title, targetTime }) => {
   const onStart = (e) => {
     timer.current = setTimeout(() => {
       setTimeExpire(true);
-      dialog.current.showModal();
+      dialog.current.open();
     }, targetTime * 1000);
     setTimerStart(true);
   };
