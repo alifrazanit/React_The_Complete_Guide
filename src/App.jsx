@@ -20,29 +20,45 @@ function App() {
 
   const handleSaveProject = (data) => {
     setProjectState((prevData) => {
+      const projectId = Math.random();
       const newProject = {
         ...data,
-        id: Math.random(),
+        id: projectId,
       };
 
       return {
         ...prevData,
+        selectedProjectId: undefined,
         projects: [...prevData.projects, newProject],
       };
     });
   };
 
-  let content;
+  const onSelectRow = (row) => {
+    setProjectState((prevData) => {
+      return {
+        ...prevData,
+        selectedProjectId: row.id
+      }
+    })
+  }
 
+  let content;
   if (projectState.selectedProjectId === null) {
     content = <NewProject onAdd={handleSaveProject} />;
   } else if (projectState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
+  } else if(projectState.selectedProjectId !== null) {
+    content = <NewProject onAdd={handleSaveProject} />;
   }
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar />
+      <SideBar 
+        onStartAddProject={handleStartAddProject}
+        projects={projectState.projects}  
+        onSelectRow={(row) => onSelectRow(row)}
+      />
       {content}
     </main>
   );
